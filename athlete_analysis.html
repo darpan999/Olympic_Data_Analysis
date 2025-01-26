@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Athlete-wise Analysis</h1>
+      <form method = "POST" action = "/athlete_analysis">
+        <label for="sport_select">Select Sport:</label>
+        <select name="sport_select" id="sport_select">
+        {% for sport in sport_list %}
+                <option value="{{ sport }}" {% if sport == selected_sport %} selected {% endif %}> {{sport}} </option>
+        {% endfor %}
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+
+   {% if chart1 %}
+          <h2>Weight vs Height of Athletes</h2>
+            <div class="chart-container">
+                  {{ chart1 | safe }}
+            </div>
+    {% endif %}
+    
+  
+    {% if chart2 %}
+        <h2>Men vs Women Participation over the years</h2>
+        <div class="chart-container">
+                  {{ chart2 | safe }}
+            </div>
+    {% endif %}
+    {% if chart3 %}
+       <h2>Distribution of Age</h2>
+         <div class="chart-container">
+               {{ chart3 | safe }}
+        </div>
+    {% endif %}
+    {% if chart4 %}
+        <h2>Distribution of Age wrt Sports(Gold Medalist)</h2>
+        <div class="chart-container">
+              {{ chart4 | safe }}
+        </div>
+    {% endif %}
+     {% if men_women_df is not none and chart2 is none %}
+         <h2>Men vs Women Participation over the years</h2>
+        <table border = "1">
+             <thead>
+                <tr>
+                    {% for col in men_women_df.columns %}
+                    <th>{{col}}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in men_women_df.iterrows() %}
+                <tr>
+                    {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                 </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+{% endblock %}
