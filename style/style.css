@@ -1,1 +1,146 @@
+/* Basic CSS styles - adjusted for improvements and responsiveness */
+:root {
+   --primary-color: #007bff;
+   --secondary-color: #6c757d;
+   --text-color: #333;
+   --background-color: #f8f9fa;
+   --border-color: #ddd;
+}
+ 
+body {
+   font-family: 'Arial', sans-serif;
+   margin: 0;
+   padding: 0;
+   color: var(--text-color);
+   background-color: var(--background-color);
+   display: flex;
+   justify-content: center; /* Horizontally center content */
+   align-items: center; /* Vertically center content */
+   min-height: 100vh; /* Ensure full screen height */
+}
+
+.container {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   width: 100%; /* Full width */
+   height: 100%; /* Full height */
+   padding: 20px;
+}
+
+.sidebar {
+   width: 25%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.content {
+   flex: 1;
+   padding: 20px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center; /* Vertically center the content inside the content area */
+   align-items: center; /* Horizontally center content */
+}
+
+.row {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   width: 100%;
+   align-items: center; /* Vertically center items in the row */
+   flex-direction: column; /* Stack the row items vertically */
+   text-align: center; /* Ensure text aligns correctly */
+}
+
+.col {
+   flex: 1;
+   padding: 20px;
+   text-align: center;
+   border: 1px solid #ccc;
+   box-sizing: border-box;
+   margin: 5px;
+   max-width: 300px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center; /* Center content both horizontally and vertically */
+}
+
+.chart-container {
+   margin: 20px auto;
+   text-align: center;
+   max-width: 80%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center; /* Center chart container content */
+}
+
+.chart-container > img {
+   max-width: 100%;
+   display: block;
+   margin: 0 auto; /* Center image inside the chart container */
+}
+
+/* Style the dropdown to appear as a vertical list */
+.dropdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#option-select {
+   padding: 10px;
+   width: 100%;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   font-size: 16px;
+   background-color: #f8f9fa;
+   display: block;
+   height: auto; /* Ensures the dropdown height adjusts based on the number of options */
+   line-height: 1.5;
+   box-sizing: border-box;
+   max-height: 200px; /* Set a max height for the dropdown */
+   overflow-y: auto; /* Enable vertical scrolling if options exceed max-height */
+}
+
+#option-select option {
+   padding: 10px;
+   margin: 5px 0; /* Adds margin between options for better readability */
+}
+@media (max-width: 768px) {
+   .container {
+     flex-direction: column;
+     justify-content: center; /* Center content vertically and horizontally */
+     align-items: center;
+   }
+
+   .sidebar {
+     width: 100%;
+   }
+
+   .row {
+     flex-direction: column;
+     margin-left: 0;
+     margin-right: 0;
+     max-width: none;
+     align-items: center;
+   }
+
+   .col {
+     flex: auto;
+     margin: 10px 0;
+     max-width: none;
+     justify-content: center;
+   }
+
+   .chart-container {
+     max-width: 100%;
+   }
+}
 
