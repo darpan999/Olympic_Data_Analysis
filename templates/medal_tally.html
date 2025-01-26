@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{title}}</h1>
+    <form method="POST">
+        <label for="year_select">Select Year:</label>
+        <select name="year_select" id="year_select">
+        {% for year in years %}
+        <option value="{{ year }}" {% if year|string == selected_year|string %} selected {% endif %}> {{ year }} </option>
+
+        {% endfor %}
+        </select>
+        <br>
+        <label for="country_select">Select Country:</label>
+            <select name="country_select" id="country_select">
+                 {% for country in countries %}
+                    <option value="{{ country }}" {% if country == selected_country %} selected {% endif %}> {{ country }} </option>
+                 {% endfor %}
+            </select>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    
+    {% if medal_table is not none %}
+    <h2>Medal Table</h2>
+    <table border="1">
+      <thead>
+            <tr>
+              {% for col in medal_table.columns %}
+                <th>{{col}}</th>
+              {% endfor %}
+            </tr>
+      </thead>
+      <tbody>
+        {% for index, row in medal_table.iterrows() %}
+          <tr>
+            {% for value in row %}
+            <td>{{value}}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+
+{% endblock %}
